@@ -1,17 +1,20 @@
 use crate::types::*;
 
+#[derive(Debug, PartialEq, Clone)]
 pub struct Todo {
-    _id: TodoId,
-    _title: TodoTitle,
-    status: TodoStatus,
+    pub id: TodoId,
+    pub title: TodoTitle,
+    pub status: TodoStatus,
 }
+
+impl Eq for Todo {}
 
 impl Todo {
     pub fn new(id: TodoId, title: String) -> Result<Todo, ()> {
         let todo_title = TodoTitle::new(title)?;
         Ok(Todo {
-            _id: id,
-            _title: todo_title,
+            id: id,
+            title: todo_title,
             status: TodoStatus::Todo,
         })
     }

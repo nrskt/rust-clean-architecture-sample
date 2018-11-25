@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct TodoTitle(String);
 
 impl TodoTitle {
