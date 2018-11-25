@@ -15,9 +15,6 @@ pub struct Mock {
 
 #[test]
 fn mock() {
-    // let m = Mock {
-    //     collection: Arc::new(Mutex::new(mock_tools::mock_todos())),
-    // };
     let m = Mock {
         collection: Arc::new(Mutex::new(vec![])),
     };
