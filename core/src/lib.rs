@@ -19,8 +19,17 @@ fn mock() {
         collection: Arc::new(Mutex::new(vec![])),
     };
     let r = usecases::get_all_todos(&m);
-    println!("{:?}", r);
+    assert_eq!(r, Ok(vec![]));
     let _ = usecases::create_new_todo(&m, types::TodoId::new(), "add test".to_string());
     let r = usecases::get_all_todos(&m);
-    println!("{:?}", r);
+    match r {
+        Ok(v) => {
+            assert_eq!(v.len(), 1);
+            assert_eq!(
+                v[0].title,
+                types::TodoTitle::new("add test".to_string()).unwrap()
+            )
+        }
+        Err(_) => assert!(false),
+    }
 }
